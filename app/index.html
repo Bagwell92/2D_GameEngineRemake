@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PixelForge</title>
+<link rel="stylesheet" href="css/editor.css">
+</head>
+<body>
+
+<!-- Start screen: new / open / recent projects -->
+<div id="start" class="start" hidden></div>
+
+<!-- Editor -->
+<div id="editor" class="editor" hidden>
+  <header class="topbar">
+    <div class="brand">PixelForge</div>
+    <button data-cmd="file" title="New, open, save, export">File ▾</button>
+    <button data-cmd="save" title="Save (Ctrl+S)">Save</button>
+    <button id="projectName" class="project-name" data-cmd="rename"></button>
+    <div class="sep"></div>
+    <button data-cmd="undo" class="icon" title="Undo (Ctrl+Z)">↶</button>
+    <button data-cmd="redo" class="icon" title="Redo (Ctrl+Y)">↷</button>
+    <div class="sep"></div>
+    <nav class="views">
+      <button data-view="level" class="active">Level</button>
+      <button data-view="sprites">Sprites</button>
+      <button data-view="sounds">Sounds</button>
+      <button data-view="script">Script</button>
+      <button data-view="settings">Settings</button>
+    </nav>
+    <div class="spacer"></div>
+    <button data-cmd="help" class="icon" title="Help and shortcuts (F1)">?</button>
+    <div class="split">
+      <button data-cmd="play" class="play" title="Play this level (F5)">▶ Play</button>
+      <button data-cmd="playMenu" class="play more" title="More ways to play">▾</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="view-level" class="view level-view">
+      <aside class="left">
+        <div class="panel">
+          <div class="panel-head"><span>Tiles</span><button class="icon" data-cmd="addTile" title="New tile type">+</button></div>
+          <div id="tilePalette" class="tile-palette"></div>
+        </div>
+        <div class="panel grow">
+          <div class="panel-head"><span>Objects</span><button class="icon" data-cmd="addObject" title="New object type">+</button></div>
+          <div id="objectPalette" class="object-palette"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><span>Levels</span><button class="icon" data-cmd="addLevel" title="New level">+</button></div>
+          <div id="levelList" class="level-list"></div>
+        </div>
+      </aside>
+      <div class="center">
+        <div id="toolbar" class="toolbar"></div>
+        <div id="canvasWrap" class="canvas-wrap"><canvas id="levelCanvas" tabindex="0"></canvas></div>
+      </div>
+      <aside class="right"><div id="inspector" class="inspector"></div></aside>
+    </section>
+    <section id="view-sprites" class="view asset-view" hidden></section>
+    <section id="view-sounds" class="view scroll-view" hidden></section>
+    <section id="view-script" class="view asset-view" hidden></section>
+    <section id="view-settings" class="view scroll-view" hidden></section>
+  </main>
+
+  <footer id="status" class="statusbar"></footer>
+</div>
+
+<!-- Playtest overlay -->
+<div id="playOverlay" class="play-overlay" hidden>
+  <div class="play-bar">
+    <strong id="playTitle"></strong>
+    <span class="muted">Esc to stop · P to pause · ` shows hitboxes</span>
+    <div class="spacer"></div>
+    <button data-cmd="stopPlay">■ Stop</button>
+  </div>
+  <div id="playStage" class="play-stage"></div>
+  <pre id="playError" class="play-error" hidden></pre>
+</div>
+
+<div id="dropHint" class="drop-hint" hidden><div>Drop images, sounds or a .pixelforge project</div></div>
+<div id="toasts"></div>
+
+<script src="js/engine.js"></script>
+<script src="js/runtime.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/templates.js"></script>
+<script src="js/pixel-editor.js"></script>
+<script src="js/editor.js"></script>
+</body>
+</html>
